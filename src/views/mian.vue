@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <el-container>
-      <el-aside style="width:auto">
+      <el-aside style="width:auto; background-color: #f1f3f4">
         <HomeAside></HomeAside>
       </el-aside>
       <el-container>
@@ -27,7 +27,7 @@ export default {
   },
 };
 </script>
-<style>
+<style lang="less">
 .el-menu-vertical-demo{
   height: 130vh;
 }
@@ -38,12 +38,14 @@ export default {
 }
 
 .el-aside {
-  background-color: #d3dce6;
   color: #333;
+  .el-menu{
+    background-color: #f1f3f4;
+  }
 }
 
 .el-main {
-  background-color: #f1f3f4;
+  background-color: white;
   color: #333;
 }
 </style>

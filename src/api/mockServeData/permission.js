@@ -37,14 +37,14 @@ export default {
                 {
                   path: '/otherPage1',
                   name: 'otherPage1',
-                  label: '页面1',
+                  label: '401',
                   icon: 'setting',
                   url: 'otherPage1.vue'
                 },
                 {
                   path: '/otherPage2',
                   name: 'otherPage2',
-                  label: '页面2',
+                  label: '404',
                   icon: 'setting',
                   url: 'otherPage2.vue'
                 }

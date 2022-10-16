@@ -34,20 +34,22 @@
           id="numCard"
           :body-style="{ padding: '0', height: '60px', width: '180px' }"
         >
-          <div class="numIcon" :style="{ background: item.color }">
-            <i
-              :class="'el-icon-' + item.icon"
-              :style="{ color: '#fdfefe', margin: '14px 14px' }"
-            ></i>
-          </div>
-          <div class="numInfo">
-            <p class="number">￥{{ item.number }}</p>
-            <p class="numName">{{ item.name }}</p>
+          <div @mouseenter="changeOver(item)" @mouseleave="changeOver(item)">
+            <div class="numIcon" :style="{ background: item.backgroundColor }">
+              <i
+                :class="'el-icon-' + item.icon"
+                :style="{ color: item.color, display: 'block', margin: '5px' }"
+              ></i>
+            </div>
+            <div class="numInfo">
+              <p class="number">￥{{ item.number }}</p>
+              <p class="numName">{{ item.name }}</p>
+            </div>
           </div>
         </el-card>
       </div>
       <el-card style="height: 280px; margin: 10px">
-        <div style="height: 280px;" ref="echarts"></div>
+        <div style="height: 280px" ref="echarts"></div>
       </el-card>
       <div class="graph">
         <el-card style="height: 250px; width: 45%">饼状图</el-card>
@@ -58,7 +60,7 @@
 </template>
 <script>
 import { getData } from "../api/data.js";
-import * as echarts from 'echarts';
+import * as echarts from "echarts";
 
 export default {
   data() {
@@ -78,6 +80,7 @@ export default {
           number: "1123",
           icon: "success",
           color: "#22b8cc",
+          backgroundColor: "#fdfefe",
         },
         {
           id: "2",
@@ -85,6 +88,7 @@ export default {
           number: "1332",
           icon: "star-on",
           color: "#ffbc7d",
+          backgroundColor: "#fdfefe",
         },
         {
           id: "3",
@@ -92,6 +96,7 @@ export default {
           number: "2223",
           icon: "error",
           color: "#51adf1",
+          backgroundColor: "#fdfefe",
         },
         {
           id: "4",
@@ -99,6 +104,7 @@ export default {
           number: "642",
           icon: "success",
           color: "#22b8cc",
+          backgroundColor: "#fdfefe",
         },
         {
           id: "5",
@@ -106,6 +112,7 @@ export default {
           number: "1231",
           icon: "star-on",
           color: "#ffbc7d",
+          backgroundColor: "#fdfefe",
         },
         {
           id: "6",
@@ -113,9 +120,9 @@ export default {
           number: "3241",
           icon: "error",
           color: "#51adf1",
+          backgroundColor: "#fdfefe",
         },
       ],
-      
     };
   },
   mounted() {
@@ -140,19 +147,28 @@ export default {
           });
         });
         const option = {
-          xAxis:{
-            data: xData
+          xAxis: {
+            data: xData,
           },
-          yAxis:{},
-          legend:{
-            data:orderKey
+          yAxis: {},
+          legend: {
+            data: orderKey,
           },
-          series
-        }
+          series,
+        };
         const E = echarts.init(this.$refs.echarts);
-        E.setOption(option)
+        E.setOption(option);
       }
     });
+  },
+  methods: {
+    // 改变图标颜色
+    changeOver(item) {
+      let temp;
+      temp = item.backgroundColor;
+      item.backgroundColor = item.color;
+      item.color = temp;
+    },
   },
 };
 </script>
@@ -202,7 +218,8 @@ export default {
       height: 60px;
       width: 60px;
       overflow: hidden;
-      font-size: 32px;
+      font-size: 50px;
+      transition: background 0.5s;
     }
     .numInfo {
       display: inline-block;
