@@ -10,7 +10,7 @@
           >
             返回
           </el-button>
-          <h1 class="h1_401">0ops!</h1>
+          <h1 class="h1_401">Oops!</h1>
           <h2 class="h2_401">你没有权限去该页面</h2>
           <h6 class="h6_401">如有不满请联系你领导</h6>
           <ul class="ul_401">
